@@ -26,7 +26,7 @@ CREATE TABLE `category` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'vagetables'),(2,'fruits');
+INSERT INTO `category` VALUES (1,'vagetables'),(2,'fruits'),(3,'milk products'),(4,'meat'),(5,'bakery'),(6,'alcohol');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51,7 +51,7 @@ CREATE TABLE `customer` (
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,7 +60,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Anatoliy','Nalyvayko'),(2,'Vasiliy','Kvasiliy');
+INSERT INTO `customer` VALUES (1,'Anatoliy','Nalyvayko'),(2,'Vasiliy','Kvasiliy'),(3,'Petro','Vatro'),(4,'Samson','Vasiliev'),(5,'Vlad','Statun'),(6,'Serhiy','Quakun');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,7 +79,7 @@ CREATE TABLE `item` (
   PRIMARY KEY (`id`),
   KEY `fk_item_category` (`category_id`),
   CONSTRAINT `item_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -88,7 +88,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (1,'potato',5.50,1);
+INSERT INTO `item` VALUES (1,'potato',5.50,1),(2,'beet',15.35,1),(3,'apple',28.50,2),(4,'orange',38.99,2),(5,'banana',25.00,2),(6,'milk',12.45,3),(7,'cheese',68.30,3),(8,'chicken',35.45,4),(9,'pig',50.02,4),(10,'bread',6.80,5),(11,'beer',6.80,6),(12,'gorilka',25.00,6);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,7 +116,7 @@ CREATE TABLE `order_item` (
 
 LOCK TABLES `order_item` WRITE;
 /*!40000 ALTER TABLE `order_item` DISABLE KEYS */;
-INSERT INTO `order_item` VALUES (1,1,3);
+INSERT INTO `order_item` VALUES (1,1,3),(1,2,2),(3,9,1),(3,12,3),(3,11,20),(4,7,1),(4,10,1);
 /*!40000 ALTER TABLE `order_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,7 +134,7 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`id`),
   KEY `fk_order_customer` (`customer_id`),
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,7 +143,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,'2015-11-10',1);
+INSERT INTO `orders` VALUES (1,'2015-11-10',1),(3,'2015-10-10',1),(4,'2015-11-11',1),(5,'2015-09-25',2),(6,'2015-10-23',3),(7,'2015-08-02',4),(8,'2015-09-15',4),(9,'2015-11-04',4),(10,'2015-10-02',5),(11,'2015-10-24',5),(12,'2015-11-11',6);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -254,4 +254,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-10 10:04:19
+-- Dump completed on 2015-11-10 10:31:35
