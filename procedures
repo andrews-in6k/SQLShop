@@ -1,2 +1,0 @@
-DELIMITER $$
-CREATE PROCEDURE `add_customer`(IN first_name VARCHAR(50), IN last_name VARCHAR(50)) BEGIN INSERT INTO `shop`.`customer` (`first_name`, `last_name`) VALUES (first_name, last_name); END$$
